@@ -17,7 +17,6 @@
 		BD291D4B26E518A300202814 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD291D4926E518A300202814 /* LaunchScreen.storyboard */; };
 		BD291D5626E518A300202814 /* shoppingListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD291D5526E518A300202814 /* shoppingListTests.swift */; };
 		BD291D6126E518A300202814 /* shoppingListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD291D6026E518A300202814 /* shoppingListUITests.swift */; };
-		BD291D6F26E531A900202814 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD291D6E26E531A900202814 /* Backend.swift */; };
 		BD70F6B226E5372D00BC2DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD70F6B126E5372D00BC2DCA /* GoogleService-Info.plist */; };
 		FDB5FEDCAA934511EBB63201 /* Pods_shoppingList_shoppingListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F68A3945E225A3C22E23A32 /* Pods_shoppingList_shoppingListUITests.framework */; };
 /* End PBXBuildFile section */
@@ -61,7 +60,6 @@
 		BD291D5C26E518A300202814 /* shoppingListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shoppingListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD291D6026E518A300202814 /* shoppingListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoppingListUITests.swift; sourceTree = "<group>"; };
 		BD291D6226E518A300202814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD291D6E26E531A900202814 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		BD70F6B126E5372D00BC2DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C01EB41F470C496CE93A85CE /* Pods-shoppingList-shoppingListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shoppingList-shoppingListUITests.debug.xcconfig"; path = "Target Support Files/Pods-shoppingList-shoppingListUITests/Pods-shoppingList-shoppingListUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DDC6B6C932D1AD3578D97C1D /* Pods_shoppingListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shoppingListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,7 +144,6 @@
 				BD291D3E26E518A200202814 /* AppDelegate.swift */,
 				BD291D4026E518A200202814 /* SceneDelegate.swift */,
 				BD291D4226E518A200202814 /* ViewController.swift */,
-				BD291D6E26E531A900202814 /* Backend.swift */,
 				BD291D4426E518A200202814 /* Main.storyboard */,
 				BD291D4726E518A300202814 /* Assets.xcassets */,
 				BD291D4926E518A300202814 /* LaunchScreen.storyboard */,
@@ -413,7 +410,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD291D6F26E531A900202814 /* Backend.swift in Sources */,
 				BD291D4326E518A200202814 /* ViewController.swift in Sources */,
 				BD291D3F26E518A200202814 /* AppDelegate.swift in Sources */,
 				BD291D4126E518A200202814 /* SceneDelegate.swift in Sources */,
