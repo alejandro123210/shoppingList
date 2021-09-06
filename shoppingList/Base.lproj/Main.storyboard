@@ -1,24 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="shoppingList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Tb-Wa-3Im">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="828"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ViewCell" id="fKd-fd-5eb">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fKd-fd-5eb" id="6xP-Ke-eIQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgH-0n-pzb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" largeTitleDisplayMode="always" id="xel-xa-Egt"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGM-WP-JDk">
+                                <rect key="frame" x="364" y="836" width="30" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="aRY-dJ-HrG"/>
+                                    <constraint firstAttribute="width" constant="30" id="wlo-IM-KA2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Dg-dp-4Cr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pGM-WP-JDk" secondAttribute="trailing" constant="20" id="1kH-Q1-GCP"/>
+                            <constraint firstItem="jgH-0n-pzb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2Uh-mh-qnQ"/>
+                            <constraint firstAttribute="trailing" secondItem="jgH-0n-pzb" secondAttribute="trailing" id="BHS-4Y-Sxs"/>
+                            <constraint firstItem="pGM-WP-JDk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Fzj-2F-9xv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pGM-WP-JDk" secondAttribute="trailing" constant="20" id="T77-gb-Eko"/>
+                            <constraint firstItem="pGM-WP-JDk" firstAttribute="top" secondItem="2Tb-Wa-3Im" secondAttribute="bottom" constant="8" symbolic="YES" id="TBQ-8o-KrM"/>
+                            <constraint firstItem="jgH-0n-pzb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="aAc-U4-yk3"/>
+                            <constraint firstItem="2Tb-Wa-3Im" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eHD-fD-DC6"/>
+                            <constraint firstItem="2Tb-Wa-3Im" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="loF-Ee-2lF"/>
+                            <constraint firstItem="2Tb-Wa-3Im" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="z8P-3k-upF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="2Tb-Wa-3Im" id="Moc-6G-qmW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-570" y="254"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
