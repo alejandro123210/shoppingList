@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
-    
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = true
@@ -52,13 +52,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func getData() {
         var new_data = [String]()
         var new_keys_data = [String:String]()
-        self.db.collection("Items").getDocuments() { (querySnapshot, err) in
+        db.collection("Items").getDocuments() { [weak tableView] (querySnapshot, err) in
             print("getting data")
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
                     new_data.append(document.data()["Item"] as! String)
                     new_keys_data[document.data()["Item"] as! String] = document.documentID
                 }
@@ -67,7 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 if self.data == [] {
                     self.data = ["add an item."]
                 }
-                self.tableView.reloadData()
+                tableView?.reloadData()
             }
         }
     }
