@@ -6,9 +6,7 @@
 //
 
 import UIKit
-import FirebaseCore
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -38,22 +36,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        
         getData()
     }
     
+    //pull down to refresh
     @objc func refresh(_ sender: AnyObject) {
         getData()
         refreshControl.endRefreshing()
     }
     
+    //get the data from the DB
     func getData() {
         var new_data = [String]()
         var new_keys_data = [String:String]()
-        db.collection("Items").getDocuments() { [weak tableView] (querySnapshot, err) in
-            print("getting data")
+        db.collection("Items").getDocuments() { [weak self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -61,30 +58,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     new_data.append(document.data()["Item"] as! String)
                     new_keys_data[document.data()["Item"] as! String] = document.documentID
                 }
-                self.data_keys = new_keys_data
-                self.data = new_data
-                if self.data == [] {
-                    self.data = ["add an item."]
+                self?.data_keys = new_keys_data
+                self?.data = new_data
+                if self?.data == [] {
+                    self?.data = ["add an item."]
                 }
-                tableView?.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
     
+    
+    //add new element to DB
     func addData(_ item: String) {
         db.collection("Items").addDocument(data: ["Item": item])
         getData()
     }
     
-    func removeData(_ item: String) {
+    //delete element from DB
+    func removeData(_ index: Int) {
         if data != ["add an item."] {
-            db.collection("Items").document(data_keys[item]!).delete()
+            db.collection("Items").document(data_keys[data[index]]!).delete()
             getData()
         }
     }
     
-    
-    
+    //sets length of tableview's list
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if data.count > 0 {
             return data.count
@@ -93,6 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    //sets the cell to use for each index
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ViewCell", for: indexPath)
         cell.textLabel?.text = data[indexPath.row]
@@ -100,25 +100,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedItem = data[indexPath.row]
-        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: selectedIndexPath, animated: true)
-        }
-        print(selectedItem)
-    }
-    
+    //sets an editing style so that the user can delete elements in the list
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            removeData(data[indexPath.row])
+            removeData(indexPath.row)
         }
     }
     
-    
+    //sets editing to true
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
     
+    //add button function, let's user type in name of item
     @IBAction func addButton(_ sender: Any) {
         print(data)
         showInputDialog(title: "Add item", subtitle: "",
@@ -136,6 +130,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 }
 
+//This extension basically creates an alert with a textbox, used in the add button so that we can add items
+//to our shopping list
 extension UIViewController {
     func showInputDialog(title:String? = nil,
                          subtitle:String? = nil,
